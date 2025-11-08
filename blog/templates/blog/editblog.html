@@ -1,0 +1,212 @@
+{% extends 'blog/base.html' %}
+
+{% block content1%}
+<style type="text/css">
+
+   .main3{
+    margin-left: 70px;
+    padding: 10px 0px;
+    margin-right: 70px;
+  }
+  .body-bg {
+
+           background-image: url("{{postinst.background.url}}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            height: 100%;
+        }  
+        .responsive {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+
+}
+.btn{display: inline-block; margin-right: 20px;}
+
+#overlay {
+   display:none;    /* This make it initially hidden                                           */
+   position:fixed;  /* This makes it so it says in a fixed position even if they scroll around */
+   left:0px;        /* This positions the element to the left most position                    */
+   top:0px;         /* This positions the elment to the top most position                      */
+   width:100%;      /* This makes the element take up 100% of the parents width                */
+   height:100%;     /* This makes the element take up 100% of the parents height               */
+   background:#000; /* Give it a black background                                              */
+   opacity:0.5;     /* Change the opacity to 50% so that is see through.                       */
+   z-index:99999;   /* Change the z-index so it will be above everything else                  */
+}
+
+#popup {
+   display:none;
+   position:fixed;
+   left:50%;              /* left and top here position top left page                                        */
+   top:50%;               /* of the element to the center of the                                             */
+   width:400px;           /* Set the popup to have a specific width/height                                   */
+   height:auto;
+   margin-top:-75px;      /* To get the popup to center correctly we need                                    */
+   margin-left:-150px;    /* To displace the the top/left margins by half of the width/height                */
+   background:#FFFFFF;    /* Background of white                                                             */
+   border:2px solid #000; /* And give it a border                                                            */
+   z-index:100000;        /* Set z-index to 1 more than that of the overlay so the popup is over the overlay */
+}
+
+
+</style>
+<script type="text/javascript">
+	
+window.onload = function() {
+   //Get the DOM element that represents the <button> element.
+   //And set the onclick event
+   document.getElementById("deletebutton").onclick = function(){
+      //Set a variable to contain the DOM element of the overly
+      var overlay = document.getElementById("overlay");
+      //Set a variable to contain the DOM element of the popup
+      var popup = document.getElementById("popup");
+      
+      //Changing the display css style from none to block will make it visible
+      overlay.style.display = "block";
+      //Same goes for the popup
+      popup.style.display = "block";
+   };
+
+document.getElementById("nobtn").onclick = function(){
+      //Set a variable to contain the DOM element of the overly
+      var overlay = document.getElementById("overlay");
+      //Set a variable to contain the DOM element of the popup
+      var popup = document.getElementById("popup");
+      
+      //Changing the display css style from none to block will make it visible
+      overlay.style.display = "none";
+popup.style.display = "none";
+
+   };
+
+};
+
+
+</script>
+<section class="body-bg h-screen w-full">
+
+	<div>
+	
+	 &nbsp;
+</div><div>
+	
+	 &nbsp;
+</div>
+<head> <meta charset="utf-8"></head>
+	<div class="lg:w-3/5 md:w-32 mx-auto bg-gray-100 p-8 bg-opacity-100 rounded-[40px]">
+		<!-- component -->
+		<div>
+		
+	       <div class=" md:w-auto mx-auto">
+		            <div class="bg-white overflow-hidden drop-shadow-xl sm:rounded-lg">
+		                <div class="p-6 bg-white border-b border-gray-200">
+		                    <form method="POST">
+                             {% load static %}
+		                    	 {% csrf_token %}
+
+		                    	  {{ form.media }}
+    <div class="relative mb-4">
+        <label for="title" class="leading-7 text-sm text-gray-600">Title</label>
+        <input type="text" id="title" name="title" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" value="{{postinst.title}}" required>
+      
+            </div>
+    <div class="relative mb-4">
+        <label for="description" class="leading-7 text-sm text-gray-600">Description</label>
+        <input type="text" id="description" name="description" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" value="{{postinst.description}}" required>
+      
+            </div>        
+     
+<div class="relative mb-4">
+        <label for="category" class="leading-7 text-sm text-gray-600">Category</label>
+        <select type="section" id="category" name="category" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+            <option value=""></option>
+        	<option value="</> Coding"{% if 'Coding' in postinst.category %} selected="selected" {% endif %} > &lt;/&gt; Coding</option>
+        	<option value="</> Python" {% if 'Python' in postinst.category %} selected="selected" {% endif %}> &lt;/&gt; Python</option>
+        	<option value="</> Java"{% if 'Java' in postinst.category %} selected="selected" {% endif %}>&lt;/&gt; Java</option>
+        	<option value="</> C/C++"{% if 'C++' in postinst.category %} selected="selected" {% endif %}>&lt;/&gt; C++</option>
+        	<option value="</> C"{% if ' C ' in postinst.category %} selected="selected" {% endif %}>&lt;/&gt; C</option>
+        	<option value="</> C#"{% if 'C#' in postinst.category %} selected="selected" {% endif %}>&lt;/&gt; C#</option>
+        	<option value="Travel"{% if 'Travel' in postinst.category %} selected="selected" {% endif %}>Travel blog</option>
+        	<option value="Cooking"{% if 'Cooking' in postinst.category %} selected="selected" {% endif %}>Cooking</option>
+            <option value="Education"{% if 'Education' in postinst.category %} selected="selected" {% endif %}>Education</option>
+        	<option value="Stories"{% if 'Stories' in postinst.category %} selected="selected" {% endif %}>Stories</option>
+            <option value="Memes"{% if 'Memes' in postinst.category %} selected="selected" {% endif %}>Memes</option>
+
+        </select>
+      
+            </div>        
+     
+            <div>
+	
+	 &nbsp;
+</div>
+
+		                        {{form}}
+		                        <div>
+	
+	 &nbsp;
+</div>
+<div>
+	
+	 &nbsp;
+</div>
+<div class="flex">
+<button type="submit" value ="save" name="savebtn" class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg w-full">Save</button> &nbsp;<button type="button" action="" id="deletebutton" class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg w-[5rem]">
+
+	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                  </svg></button></div>
+
+
+                  <div id="overlay"> 
+                
+
+ </div>
+ <div id="popup" class="flex">are you sure you want to delete this??
+ 	<br>
+    lol test
+    <br>
+    lol test
+    <br>
+    lol test
+    <br>
+    lol test
+    <br>
+    lol test
+    <br>
+    lol test
+        <br>
+ 	<button id="nobtn" type="button" class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg w-[5rem]" > no </button>
+ 	&nbsp;
+ 	<button id="delbtn" value="delete" name="deletebutton" type="submit" class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg w-[5rem]" > yup </button>
+
+</div>
+		                    </form>
+		                    	
+		                </div>
+		            </div>
+		        </div>
+		</div>
+
+
+
+	</div>
+
+<div>
+	
+	 &nbsp;
+</div>
+<div>
+	
+	 &nbsp;
+</div>
+<div>
+	
+	 &nbsp;
+</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style type="text/css">
+ 
+
+</style>
+<script>
+function redirect1() {
+  location.replace("http://127.0.0.1:8000/register")
+}
+
+function redirect2() {
+  location.replace("http://127.0.0.1:8000/login")
+}
+</script>
+{% if request.user.is_authenticated %}
+
+  <header class="text-gray-600 body-font shadow-lg nevd" >
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <img src="https://cdn.discordapp.com/attachments/898579496955953152/965235222625001582/Eyes_-_The_Horror_Game_65.jpg" alt="Logo" class="rounded-full h-9 w-9" /><span class="font-semibold text-gray-500 text-lg">
+      <span class="ml-3 text-xl">ΞRedsky.</span>
+    </a>
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center">
+      <a href="http://127.0.0.1:8000/blog/blogs" class="mr-5 hover:text-gray-900">Blogs</a>
+     <a href="http://127.0.0.1:8000/profile" class="mr-5 hover:text-gray-900">Profile</a>
+    </nav>
+    <form method="post">
+       {% csrf_token %}
+    <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" value="logout" action="" name="logoutbutton">Logout
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </button>
+    </form>
+  </div>
+</header>
+{% else %}
+  <header class="text-gray-600 body-font shadow-lg nevd" >
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <img src="https://cdn.discordapp.com/attachments/898579496955953152/965235222625001582/Eyes_-_The_Horror_Game_65.jpg" alt="Logo" class="rounded-full h-9 w-9" /><span class="font-semibold text-gray-500 text-lg">
+      <span class="ml-3 text-xl">ProgrammersHub.</span>
+    </a>
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center">
+
+      <a class="mr-5 hover:text-gray-900">Projects</a>
+      <a class="mr-5 hover:text-gray-900">Dasboard</a>
+      <a class="mr-5 hover:text-gray-900">About me</a>
+    </nav>
+    <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" onclick="redirect1()">Sign-up
+    </button>
+
+    &nbsp;
+     <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" onclick="redirect2()">Sign-in
+      
+     
+    </button>
+  </div>
+</header>
+ {% endif %}
+<body>
+{% block content1 %}
+{% endblock %}
+
+</body>
+</html>

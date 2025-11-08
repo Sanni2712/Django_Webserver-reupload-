@@ -1,0 +1,68 @@
+{% extends 'blog/base.html' %}
+
+{% block content1%}
+<style type="text/css">
+
+   .main3{
+    margin-left: 70px;
+    padding: 10px 0px;
+    margin-right: 70px;
+  }
+  .body-bg {
+
+            background-image: url("https://cdn.discordapp.com/attachments/888107954908319774/973958903727525938/programming.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+      background-position: center;
+        }  
+        .responsive {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+</style>
+
+<section class="text-gray-600 body-font body-bg">
+  <form method="POST">
+<div class="main3">
+  <div class="container px-5 py-24 flex flex-wrap items-center">
+    <div class="lg:w-1/2 flex w-full mb-20 flex-wrap bg-gray-300 p-7 bg-opacity-50 rounded-[40px]">
+      <h1 class="title-font font-medium text-3xl text-gray-900"><strong>Join Our community!</strong></h1>
+      <p class="leading-relaxed mt-4 text-gray-900">Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p>
+    </div>
+
+    <div class="lg:w-4/12 md:w-2/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 shadow-md responsive">
+      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
+
+ <a class="text-white"><p style="font-size:12px"><font color="#DC143C">{{msg}}</font></p></a>
+      <div class="relative mb-4">
+        {% csrf_token %}
+        <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+        <input type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+      </div>
+      <div class="relative mb-4">
+        <label for="Username" class="leading-7 text-sm text-gray-600">Username</label>
+        <input type="text" id="Username" name="Username" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"required>
+      </div> 
+      <div class="relative mb-4">
+        <label for="password1" class="leading-7 text-sm text-gray-600">Password</label>
+        <input type="text" id="password1" name="password1" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+        <div class="relative mb-4">
+            </div>
+            <div>
+      <label for="password2" class="leading-7 text-sm text-gray-600">Conform Password</label>
+        <input type="text" id="password2" name="password2" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+</div>
+    &nbsp;
+
+      <button type="submit" class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg w-full">Create</button>
+<div align="center">
+      <p class="text-xs text-gray-500 mt-3">Aldready have an account? <a class="text-blue-600 hover:underline" href="/login">Sign-in</p>
+</div>
+    </div>
+  </div>
+  </div>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'blog/base.html' %}
+{% block content1 %}
+
+<style type="text/css">
+
+   .main3{
+    margin-left: 50px;
+    padding: 0px 50px;
+    margin-right: 50px;
+
+  }
+  .body-bg1 {
+
+            background-image: url("https://media.convertkit.com/2017/03/p9RuSS53-homepage.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        width:100%;
+  height:100%;
+  overflow:hidden;
+  background-size:cover;
+        }  
+  .body-bg {
+
+            background-image: url("{{request.user.profile.background.url}}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        width:100%;
+  height:100%;
+  overflow:hidden;
+  background-size:cover;
+        }  
+
+        .responsive {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+
+.responsive {
+  width: 100%;
+  max-width: 400px;
+  height: 70%;
+}
+</style>
+
+{% if request.user.is_authenticated %}
+<section class="body-bg h-screen w-full p-8">
+
+{% else %}
+
+<section class="body-bg1 h-screen w-full p-8">
+
+ {% endif %}
+
+  <div>
+	
+	 &nbsp;
+</div>  <div>
+	
+	 &nbsp;
+</div>
+
+
+	<div class="lg:w-4/5 mx-auto bg-gray-200 drop-shadow-2xl p-14 bg-opacity-90 rounded-[40px]" align = "center">
+		  <div>
+	
+	 &nbsp;
+</div>
+
+  <div class="lg:w-full h-80 bg-gray-100 drop-shadow-2xl p-8 bg-opacity-100 rounded-[40px]">
+
+  </div>
+  <div>
+	
+	 &nbsp;
+</div>
+		<div>
+	
+	 &nbsp;
+</div>
+		<div>
+	
+	 &nbsp;
+</div>
+		
+
+  <div class="lg:w-full h-80 bg-gray-100 drop-shadow-2xl p-8 bg-opacity-100 rounded-[40px]">
+
+  </div>
+    <div>
+	
+	 &nbsp;
+</div>
+
+	</div>
+
+
+
+
+
+
+  <div>
+	
+	 &nbsp;
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

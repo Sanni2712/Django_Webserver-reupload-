@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include("mysiteblog.urls")),
     path('blog/', include("blog2.urls")),
     path('profile/', include("userprofile.urls")),
+    path('skylldms/', include("dms.urls")),
 ]

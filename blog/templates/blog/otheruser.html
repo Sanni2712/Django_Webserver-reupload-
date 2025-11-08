@@ -1,0 +1,144 @@
+{% extends 'blog/base.html' %}
+
+{% block content1%}
+
+<style type="text/css">
+
+   .main3{
+    margin-left: 5px;
+    padding: 0px 50px;
+    margin-right: 5px;
+
+  }
+  .body-bg {
+
+            background-image: url("{{os.profile.background.url}}");
+              background-repeat: no-repeat;
+              background-position: center;
+            background-attachment: fixed;
+        width:100%;
+  height:100%;
+  overflow:hidden;
+  background-size:cover;
+        }  
+        .responsive {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+#ovf{
+      clear: right;}
+
+.responsive {
+  width: 100%;
+  max-width: 400px;
+  height: 70%;
+}
+</style>
+
+<section class="h-screen w-full body-bg p-10">
+  
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+
+  <div class="lg:w-5/6 mx-auto bg-gray-200 drop-shadow-2xl p-8 bg-opacity-90 rounded-[40px]" >
+    <div class="lg:w-1/2 bg-gray-100 drop-shadow-2xl p-8 bg-opacity-100 rounded-[40px]">
+      <img src="{{os.profile.image.url}} " class="rounded-full shadow-lg w-32 h-32">
+      
+    </div>
+
+    <div>&nbsp;</div>
+
+    <div class="bg-gray-100 drop-shadow-2xl p-8 bg-opacity-100 rounded-[40px]">
+      <h2 class="text-2xl font-medium text-black title-font mb-2">{{os.username}}</h2>
+      {{os.user.email}}
+    </div>
+  
+  </div>
+  
+  <div> &nbsp;</div>
+  <div> &nbsp;</div>
+  <div> &nbsp;</div>
+  <div> &nbsp;</div>
+
+  <div class="lg:w-5/6 mx-auto bg-gray-200 drop-shadow-2xl p-8 bg-opacity-90 rounded-[40px]" >
+
+    <section class="text-gray-600 body-font overflow-hidden  ">
+      <div class="container px-5 py-24 mx-auto ">
+
+
+        <div class="bg-gray-100 shadow-xl p-8 bg-opacity-100 rounded-[40px]">
+
+          <div class="py-8 flex flex-wrap md:flex-nowrap">
+            <h2 class="text-2xl font-medium text-black title-font"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Posts</strong></h2>
+          </div>
+
+        </div>
+        <div> &nbsp;</div>
+        <div> &nbsp;</div>
+        <div> &nbsp;</div>
+        <div> &nbsp;</div>
+        {% for s in m %}
+        <div class="-my-8 divide-y-2 divide-gray-100 bg-gray-100 shadow-xl p-8 bg-opacity-100 rounded-[40px]">
+
+          <div class="py-8 flex flex-wrap md:flex-nowrap">
+     
+            <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col ">
+              <a class="inline-flex items-center">
+                <img alt="blog" src="{{ s.user.profile.image.url }}" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
+
+                <span class="flex-grow flex flex-col pl-3">
+                  <span class="title-font font-medium text-gray-900">{{s.user}}</span>
+                </span>
+              </a>
+
+                   <div> &nbsp;</div>
+                <span class="mt-1 text-gray-500 text-sm">&nbsp; {{s.upload_to}}</span>
+            </div>
+
+            <div class="md:flex-grow">
+              <span class="inline-block rounded bg-indigo-50 text-green-500 text-xs font-medium tracking-widest">{{s.category}}
+              </span>
+              <h2 class="text-2xl font-medium text-black title-font mb-2">
+                {{s.title}} 
+              </h2>
+              <p class="leading-relaxed">
+                {{s.description}}
+              </p>
+               
+              <a class="inline-flex items-center mt-4" href="http://127.0.0.1:8000/blog/{{s.id}}">Read More
+                <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+                </svg>
+              </a>  
+            </div>
+
+            <div class="relative h-32 w-32">
+         
+
+              
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div> &nbsp;</div>
+        <div> &nbsp;</div>
+        <div> &nbsp;</div>
+        <div> &nbsp;</div>
+        <div> &nbsp;</div>
+                {% endfor %}
+      </div>
+    </section>
+  </div>
+    
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+    
+</section>
+{% endblock %}  
